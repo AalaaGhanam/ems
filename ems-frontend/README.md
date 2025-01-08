@@ -40,7 +40,7 @@ docker-compose up --build
 docker-compose down
 ```
 
-The React application will be accessible at http://localhost:3000/, and the output will be the produucts list screen.
+Access Throw: http://localhost:3001
 
 **Features**
 1. **Authentication:**<br />
