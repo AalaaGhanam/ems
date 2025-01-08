@@ -1,5 +1,5 @@
-import { MigrationInterface, QueryRunner } from 'typeorm';
-import * as bcrypt from 'bcryptjs';
+import { MigrationInterface, QueryRunner } from "typeorm";
+import * as bcrypt from "bcryptjs";
 
 export class InitDatabase1691234567890 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
@@ -33,7 +33,7 @@ export class InitDatabase1691234567890 implements MigrationInterface {
     `);
 
     // Insert initial Admin user
-    const hashedPassword = await bcrypt.hash('admin123', 10); // Hash the password
+    const hashedPassword = await bcrypt.hash("admin123", 10); // Hash the password
     await queryRunner.query(`
       INSERT INTO "user" ("Username", "Password", "Role")
       VALUES ('admin123', '${hashedPassword}', 'Admin');

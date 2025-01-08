@@ -1,2 +1,38 @@
-# employee-management-system
+# Employee Management System
+
+Welcome to the Employee Management System APIs written in NodeJS using NestJS and ReactJS framework.
+# EMS BAckend
+
+The detaild steps to run the backend service in the readme (https://github.com/AalaaGhanam/ems/blob/main/ems-service/README.md).
+
+You can run the service using docker compose,
+To set up environment variables copy and paste then rename the .dev.env files to .env.
+
+> [!IMPORTANT]
+> To initiate the initial data database, I added migration script to run throw docker compose if you run by docker compose the migrations files will run automatically.
+
+
+- Run Service
+- Run Throw Docker
+```sh
+# Run
+docker-compose up --build
+
+# Stop
+docker-compose down
+docker volume rm ems-service_postgres-data
+```
+
+### Service Structure and Endpoints
  
+EMS service consists of multiple controllers, 
+You can try to login with admin credentials using 
+```sh
+{
+  "username": "admin123",
+  "password": "admin123"
+}
+```
+Check swagger for detailed breakdown of the API endpoints:
+
+http://localhost:3000/api#/

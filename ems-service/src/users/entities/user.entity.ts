@@ -1,20 +1,20 @@
-import { Entity, PrimaryGeneratedColumn, Column, Unique } from 'typeorm';
-import { UserRole } from '../../shared/enums/user-role.enum';
+import { Entity, PrimaryGeneratedColumn, Column, Unique } from "typeorm";
+import { UserRole } from "../../shared/enums/user-role.enum";
 
 @Entity()
-@Unique(['Username'])
+@Unique(["Username"])
 export class User {
   @PrimaryGeneratedColumn()
   Id: number;
 
-  @Column({ unique: true, nullable: false})
+  @Column({ unique: true, nullable: false })
   Username: string;
 
   @Column()
   Password: string;
 
   @Column({
-    type: 'enum',
+    type: "enum",
     enum: UserRole,
     default: UserRole.User,
   })
