@@ -9,10 +9,9 @@ import classes from './Login.module.scss'
 import { loginUser } from '../../store/auth/AuthActions'
 import { ROUTES } from '../../enums/routes'
 import { authActions } from '../../store/auth/AuthSlice'
-import { jwtDecode } from 'jwt-decode'
+import jwtDecode from 'jwt-decode'
 import { getRecord } from '../../utils'
 import { STORAGE } from '../../enums/storage'
-import { isClassExpression } from 'typescript'
 
 const LoginForm = () => {
     const [form] = Form.useForm()

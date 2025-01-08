@@ -1,6 +1,7 @@
 import React from 'react'
 import { Row, Col, Card, Statistic, Table } from 'antd'
 import { TeamOutlined, ApartmentOutlined } from '@ant-design/icons'
+import { useTranslation } from 'react-i18next'
 
 interface ListProps {
     totalEmployees: number
@@ -13,12 +14,26 @@ const DashboardOverview = ({
     latestEmployees,
     departmentDistribution,
 }: ListProps) => {
+    const { t } = useTranslation()
+
     const recentHires = []
     recentHires.push(latestEmployees)
     const columns = [
-        { title: 'FirstName', dataIndex: 'FirstName', key: 'FirstName' },
-        { title: 'LastName', dataIndex: 'LastName', key: 'LastName' },
-        { title: 'Hire Date', dataIndex: 'HireDate', key: 'HireDate' },
+        {
+            title: t('DASHBOARD.FIRSTNAME'),
+            dataIndex: 'FirstName',
+            key: 'FirstName',
+        },
+        {
+            title: t('DASHBOARD.LASTNAME'),
+            dataIndex: 'LastName',
+            key: 'LastName',
+        },
+        {
+            title: t('DASHBOARD.HIREDATE'),
+            dataIndex: 'HireDate',
+            key: 'HireDate',
+        },
     ]
 
     return (
@@ -28,14 +43,14 @@ const DashboardOverview = ({
                     <Col span={24}>
                         <Card>
                             <Statistic
-                                title="Total Employees"
+                                title={t('DASHBOARD.TOTAL.EMPLOYEES')}
                                 value={totalEmployees}
                                 prefix={<TeamOutlined />}
                             />
                         </Card>
                     </Col>
                     <Col span={24}>
-                        <Card title="Department Distribution">
+                        <Card title={t('DASHBOARD.DEPARTMENT_DISTRIBUTION')}>
                             <Row gutter={[16, 16]}>
                                 {departmentDistribution?.map((dept: any) => (
                                     <Col key={dept.department_name} span={6}>
@@ -54,7 +69,7 @@ const DashboardOverview = ({
                         </Card>
                     </Col>
                     <Col span={24}>
-                        <Card title="Recent Hires">
+                        <Card title={t('DASHBOARD.RECENT_HIRES')}>
                             <Table
                                 dataSource={recentHires}
                                 columns={columns}
@@ -64,7 +79,7 @@ const DashboardOverview = ({
                     </Col>
                 </Row>
             ) : (
-                <h2>{'PRODUCT.LIST.EMPTY'}</h2>
+                <h2>{t('LOADER')}</h2>
             )}
         </>
     )

@@ -6,10 +6,13 @@ import {
     ApartmentOutlined,
 } from '@ant-design/icons'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 const { Sider } = Layout
 
 const SideMenu: React.FC = () => {
+    const { t } = useTranslation()
+
     return (
         <Sider
             breakpoint="lg"
@@ -20,7 +23,7 @@ const SideMenu: React.FC = () => {
                 className="logo"
                 style={{ color: 'white', textAlign: 'center', padding: '16px' }}
             >
-                Admin Dashboard
+                {t('DASHBOARD.ADMIN')}
             </div>
             <Menu
                 style={{ backgroundColor: '#488cf4' }}
@@ -28,13 +31,15 @@ const SideMenu: React.FC = () => {
                 defaultSelectedKeys={['1']}
             >
                 <Menu.Item key="1" icon={<DashboardOutlined />}>
-                    <Link to="/">Dashboard</Link>
+                    <Link to="/">{t('DASHBOARD')}</Link>
                 </Menu.Item>
                 <Menu.Item key="2" icon={<TeamOutlined />}>
-                    <Link to="/employees">Employees</Link>
+                    <Link to="/employees">{t('DASHBOARD.EMPLOYEES')}</Link>
                 </Menu.Item>
                 <Menu.Item key="3" icon={<ApartmentOutlined />}>
-                    <Link to="/departments">Departments</Link>
+                    <Link to="/departments">
+                        {t('DASHBOARD.DEPARTMENTIDS')}
+                    </Link>
                 </Menu.Item>
             </Menu>
         </Sider>

@@ -7,7 +7,7 @@ import {
 } from '../../utils/index'
 import { loginUser } from './AuthActions'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { jwtDecode } from 'jwt-decode'
+import jwtDecode from 'jwt-decode'
 import { UserRole } from '../../enums/userRole'
 import { User } from '../../models/user.model'
 
@@ -50,6 +50,7 @@ const authSlice = createSlice({
 
                 const user: User = { name: username, role }
                 state.user = user
+
                 saveRecord(STORAGE.ACCESS_TOKEN, access_token)
                 saveRecord(STORAGE.USER, user)
                 openNotification('Logged in successfully', 'success')

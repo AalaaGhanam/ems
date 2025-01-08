@@ -40,7 +40,6 @@ const addDepartment = createAsyncThunk(
 const editDepartment = createAsyncThunk(
     'dashboard/editDepartment',
     async (payload: { department: DepartmentDto; id: string }) => {
-        console.log('hjhjhjhjhbbb', payload)
         const response = await api.put(
             config.apis.departments + '/' + payload.id,
             payload.department
@@ -75,10 +74,7 @@ const addEmployee = createAsyncThunk(
 const deleteEmployee = createAsyncThunk(
     'dashboard/deleteEmployee',
     async (id: string) => {
-        console.log('kkkk')
-
         const response = await api.delete(config.apis.employees + '/' + id)
-        console.log('kkkk', response)
         return { id }
     }
 )

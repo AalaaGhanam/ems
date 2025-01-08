@@ -78,7 +78,7 @@ const DepartmentList = ({ departments }: ListProps) => {
     const edit = (
         record: Partial<DepartmentPropsTypes> & { key: React.Key }
     ) => {
-        form.setFieldsValue({ name: '', age: '', address: '', ...record })
+        form.setFieldsValue({ Name: '', ...record })
         setEditingKey(record.key)
     }
 
@@ -107,7 +107,7 @@ const DepartmentList = ({ departments }: ListProps) => {
                 messageApi.open({
                     key: row.Name,
                     type: 'success',
-                    content: `${row.Name} ${t('PRODUCT.CART.MESSAGE')}`,
+                    content: `${row.Name} ${t('DASHBOARD.SUCCESS.MESSAGE')}`,
                     duration: 2,
                 })
             } catch (error) {}
@@ -131,7 +131,7 @@ const DepartmentList = ({ departments }: ListProps) => {
 
     const columns = [
         {
-            title: 'Name',
+            title: t('DASHBOARD.NAME'),
             dataIndex: 'Name',
             editable: true,
         },
@@ -146,10 +146,13 @@ const DepartmentList = ({ departments }: ListProps) => {
                             onClick={() => save(record.key)}
                             style={{ marginInlineEnd: 8 }}
                         >
-                            Save
+                            {t('DASHBOARD.BUTTON.SAVE')}
                         </Typography.Link>
-                        <Popconfirm title="Sure to cancel?" onConfirm={cancel}>
-                            <a>Cancel</a>
+                        <Popconfirm
+                            title={t('DASHBOARD.CANCEL.MESSAGE')}
+                            onConfirm={cancel}
+                        >
+                            <a>{t('DASHBOARD.BUTTON.CANCEL')}</a>
                         </Popconfirm>
                     </span>
                 ) : (
@@ -157,7 +160,7 @@ const DepartmentList = ({ departments }: ListProps) => {
                         disabled={editingKey !== ''}
                         onClick={() => edit(record)}
                     >
-                        Edit
+                        {t('DASHBOARD.BUTTON.EDIT')}
                     </Typography.Link>
                 )
             },
@@ -199,7 +202,7 @@ const DepartmentList = ({ departments }: ListProps) => {
                     />
                 </Form>
             ) : (
-                <></>
+                <h2>{t('LOADER')}</h2>
             )}
         </>
     )

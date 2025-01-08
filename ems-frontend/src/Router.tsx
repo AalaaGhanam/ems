@@ -4,7 +4,7 @@ import ResultComponent from './components/Result/Result'
 import Login from './pages/Login/Login'
 import Dashboard from './pages/Dashboard/Dashboard'
 import Departments from './pages/Departments/Departments'
-import Employees from './pages/Employees/EmployeesPage'
+import Employees from './pages/Employees/Employees'
 import { getRecord } from './utils'
 import { STORAGE } from './enums/storage'
 

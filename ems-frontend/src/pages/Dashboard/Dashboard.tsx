@@ -10,24 +10,22 @@ import {
 } from '../../store/dashboard/DashboardActions'
 import { dashboardActions } from '../../store/dashboard/DashboardSlice'
 import { commonActions } from '../../store/common/CommonSlice'
+import { ROUTES } from '../../enums/routes'
+import { useNavigate } from 'react-router-dom'
 
 const { Content } = Layout
 
 const Dashboard = () => {
     const dispatch = useAppDispatch()
+    const navigate = useNavigate()
 
-    const [totalEmployees] = useAppSelector((state) => [
-        state.dashboard.totalEmployees,
-    ])
-
-    const [latestEmployees] = useAppSelector((state) => [
-        state.dashboard.latestEmployees,
-    ])
-    const [user] = useAppSelector((state) => [state.auth.user])
-    console.log('jkjkjk', user)
-    const [departmentDistribution] = useAppSelector((state) => [
-        state.dashboard.departmentDistribution,
-    ])
+    const [totalEmployees, latestEmployees, departmentDistribution] =
+        useAppSelector((state) => [
+            state.dashboard.totalEmployees,
+            state.dashboard.latestEmployees,
+            state.dashboard.departmentDistribution,
+        ])
+    const userReduxState = useAppSelector((state) => state.auth)
 
     useEffect(() => {
         dispatch(dashboardActions.reset())
@@ -36,7 +34,11 @@ const Dashboard = () => {
         dispatch(getLatestEmployees())
         dispatch(countByDepartment())
     }, [])
-
+    useEffect(() => {
+        if (!userReduxState.user) {
+            navigate(`/${ROUTES.LOGIN}`, { replace: true })
+        }
+    }, [userReduxState])
     return (
         <Layout style={{ minHeight: '100vh' }}>
             <SideMenu />

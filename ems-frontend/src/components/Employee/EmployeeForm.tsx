@@ -31,7 +31,7 @@ const EmployeeForm = ({ departments }: ListProps) => {
             messageApi.open({
                 key: values.FirstName,
                 type: 'success',
-                content: `${values.FirstName} ${t('PRODUCT.CART.MESSAGE')}`,
+                content: `${values.FirstName} ${t('DASHBOARD.SUCCESS.MESSAGE')}`,
                 duration: 2,
             })
         } catch (error) {}
@@ -44,61 +44,61 @@ const EmployeeForm = ({ departments }: ListProps) => {
             {departments?.length > 0 ? (
                 <Form onFinish={onFinish} layout="vertical">
                     <Form.Item
-                        label="FirstName"
+                        label={t('DASHBOARD.FIRSTNAME')}
                         name="FirstName"
                         rules={[
                             {
                                 required: true,
-                                message: 'Please enter the FirstName',
+                                message: t('DASHBOARD.FORM.MESSAGE'),
                             },
                         ]}
                     >
                         <Input />
                     </Form.Item>
                     <Form.Item
-                        label="LastName"
+                        label={t('DASHBOARD.LASTNAME')}
                         name="LastName"
                         rules={[
                             {
                                 required: true,
-                                message: 'Please enter the LastName',
+                                message: t('DASHBOARD.FORM.MESSAGE'),
                             },
                         ]}
                     >
                         <Input />
                     </Form.Item>
                     <Form.Item
-                        label="Email"
+                        label={t('DASHBOARD.EMAIL')}
                         name="Email"
                         rules={[
                             {
                                 required: true,
-                                message: 'Please enter the Email',
+                                message: t('DASHBOARD.FORM.MESSAGE'),
                             },
                         ]}
                     >
                         <Input />
                     </Form.Item>
                     <Form.Item
-                        label="Salary"
+                        label={t('DASHBOARD.SALARY')}
                         name="Salary"
                         rules={[
                             {
                                 required: true,
-                                message: 'Please enter the Salary',
+                                message: t('DASHBOARD.FORM.MESSAGE'),
                             },
                         ]}
                     >
                         <Input />
                     </Form.Item>
                     <Form.Item
-                        name="HireDate"
+                        name={t('DASHBOARD.HIREDATE')}
                         label={'HireDate'}
                         rules={[
                             {
                                 type: 'object',
                                 required: true,
-                                message: 'Please enter the HireDate',
+                                message: t('DASHBOARD.FORM.MESSAGE'),
                             },
                         ]}
                         getValueProps={(i) => ({ value: moment(i) })}
@@ -110,12 +110,12 @@ const EmployeeForm = ({ departments }: ListProps) => {
                         />
                     </Form.Item>
                     <Form.Item
-                        label="DepartmentId"
+                        label={t('DASHBOARD.DEPARTMENTID')}
                         name="DepartmentId"
                         rules={[
                             {
                                 required: true,
-                                message: 'Please select the department',
+                                message: t('DDASHBOARD.FORM.MESSAGE'),
                             },
                         ]}
                     >
@@ -126,21 +126,15 @@ const EmployeeForm = ({ departments }: ListProps) => {
                             }))}
                         />
                     </Form.Item>
-                    <Form.Item>
-                        <Button type="primary" htmlType="submit">
-                            Save
-                        </Button>
-                    </Form.Item>
+                    <Button type="primary" htmlType="submit">
+                        {t('DASHBOARD.BUTTON.SAVE')}
+                    </Button>
                 </Form>
             ) : (
-                <>vvv</>
+                <>{t('LOADER')}</>
             )}
         </>
     )
 }
 
 export default EmployeeForm
-
-function dispatch(arg0: any) {
-    throw new Error('Function not implemented.')
-}

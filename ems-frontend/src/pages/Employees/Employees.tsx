@@ -10,21 +10,31 @@ import {
 } from '../../store/dashboard/DashboardActions'
 import { Employee } from '../../models/employee.model'
 import { Department } from '../../models/department.model'
+import { ROUTES } from '../../enums/routes'
+import { useNavigate } from 'react-router-dom'
 
 const { Content } = Layout
 
 const Employees: React.FC = () => {
     const dispatch = useAppDispatch()
+    const navigate = useNavigate()
 
     const [employees, departments] = useAppSelector((state) => [
         state.dashboard.employees,
         state.dashboard.departments,
     ])
+    const userReduxState = useAppSelector((state) => state.auth)
 
     useEffect(() => {
         dispatch(getAllEmployees())
         dispatch(getAllDepartments())
     }, [])
+
+    useEffect(() => {
+        if (!userReduxState.user) {
+            navigate(`/${ROUTES.LOGIN}`, { replace: true })
+        }
+    }, [userReduxState])
 
     return (
         <Layout style={{ minHeight: '100vh' }}>
@@ -38,6 +48,7 @@ const Employees: React.FC = () => {
                     }}
                 >
                     <EmployeeForm departments={departments as Department[]} />
+                    <br />
                     <EmployeeList employees={employees as Employee[]} />
                 </Content>
             </Layout>

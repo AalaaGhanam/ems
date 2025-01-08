@@ -22,7 +22,7 @@ const DepartmentForm: React.FC = () => {
             messageApi.open({
                 key: values.Name,
                 type: 'success',
-                content: `${values.Name} ${t('PRODUCT.CART.MESSAGE')}`,
+                content: `${values.Name} ${t('DASHBOARD.SUCCESS.MESSAGE')}`,
                 duration: 2,
             })
         } catch (error) {}
@@ -33,22 +33,20 @@ const DepartmentForm: React.FC = () => {
             {contextHolder}
             <Form onFinish={onFinish} layout="vertical">
                 <Form.Item
-                    label="Department Name"
+                    label={t('DASHBOARD.DEPARTMENT.NAME')}
                     name="Name"
                     rules={[
                         {
                             required: true,
-                            message: 'Please enter the department name',
+                            message: t('DASHBOARD.FORM.MESSAGE'),
                         },
                     ]}
                 >
                     <Input />
                 </Form.Item>
-                <Form.Item>
-                    <Button type="primary" htmlType="submit">
-                        Save
-                    </Button>
-                </Form.Item>
+                <Button type="primary" htmlType="submit">
+                    {t('DASHBOARD.BUTTON.SAVE')}
+                </Button>
             </Form>
         </>
     )

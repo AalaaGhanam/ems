@@ -22,7 +22,7 @@ const EmployeeList = ({ employees }: ListProps) => {
             messageApi.open({
                 key: record.FirstName,
                 type: 'success',
-                content: `${record.FirstName} ${t('PRODUCT.CART.MESSAGE')}`,
+                content: `${record.FirstName} ${t('DASHBOARD.SUCCESS.MESSAGE')}`,
                 duration: 2,
             })
         } catch (error) {}
@@ -30,39 +30,39 @@ const EmployeeList = ({ employees }: ListProps) => {
 
     const columns: any = [
         {
-            title: 'FirstName',
+            title: t('DASHBOARD.FIRSTNAME'),
             dataIndex: 'FirstName',
             key: 'FirstName',
             sorter: (a: any, b: any) => a.FirstName.localeCompare(b.FirstName),
         },
         {
-            title: 'LastName',
+            title: t('DASHBOARD.LASTNAME'),
             dataIndex: 'LastName',
             key: 'LastName',
             sorter: (a: any, b: any) => a.LastName.localeCompare(b.LastName),
         },
-        { title: 'Email', dataIndex: 'Email', key: 'Email' },
+        { title: t('DASHBOARD.EMAIL'), dataIndex: 'Email', key: 'Email' },
         {
-            title: 'DepartmentId',
+            title: t('DASHBOARD.DEPARTMENTID'),
             dataIndex: 'DepartmentId',
             key: 'DepartmentId',
             sorter: (a: any, b: any) =>
                 a.DepartmentId.localeCompare(b.DepartmentId),
         },
         {
-            title: 'HireDate',
+            title: t('DASHBOARD.HIREDATE'),
             dataIndex: 'HireDate',
             key: 'HireDate',
             sorter: (a: any, b: any) => a.HireDate.localeCompare(b.HireDate),
         },
         {
-            title: 'Salary',
+            title: t('DASHBOARD.SALARY'),
             dataIndex: 'Salary',
             key: 'Salary',
             sorter: (a: any, b: any) => a.Salary.localeCompare(b.Salary),
         },
         {
-            title: 'Department',
+            title: t('DASHBOARD.DEPARTMENT'),
             dataIndex: 'Department',
             key: 'Department',
             render: (item: any) => Object.values(item)[1],
@@ -80,11 +80,11 @@ const EmployeeList = ({ employees }: ListProps) => {
             // ),
             render: (_: any, record: any) => (
                 <Popconfirm
-                    title="Sure to delete?"
+                    title={t('DASHBOARD.DELETE.MESSAGE')}
                     onConfirm={() => handleDelete(record)}
                 >
                     <Button type="link" danger>
-                        Delete
+                        {t('DASHBOARD.BUTTON.DELETE')}
                     </Button>
                 </Popconfirm>
             ),
@@ -94,9 +94,8 @@ const EmployeeList = ({ employees }: ListProps) => {
     return (
         <div>
             {contextHolder}
-
             <Input
-                placeholder="Search employees"
+                placeholder={t('DASHBOARD.SEARCH.EMPLOYEE')}
                 prefix={<SearchOutlined />}
                 value={searchText}
                 onChange={(e) => setSearchText(e.target.value)}
