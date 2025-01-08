@@ -1,9 +1,8 @@
-
 export interface DepartmentDto {
-	Name: string;
+    Name: string
 }
 
 export interface EditDepartmentDto {
-	Name: string;
-	key?: string;
+    Name: string
+    key?: string
 }

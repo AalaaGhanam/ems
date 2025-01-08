@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import CommonReducer from './common/CommonSlice'
-import AuthReducer from './auth/AuthSlice';
-import DashboardReducer from './dashboard/DashboardSlice';
+import AuthReducer from './auth/AuthSlice'
+import DashboardReducer from './dashboard/DashboardSlice'
 
 const store = configureStore({
     reducer: {

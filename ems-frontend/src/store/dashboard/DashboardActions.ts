@@ -39,9 +39,12 @@ const addDepartment = createAsyncThunk(
 
 const editDepartment = createAsyncThunk(
     'dashboard/editDepartment',
-    async (payload: {department : DepartmentDto, id: string}) => {
+    async (payload: { department: DepartmentDto; id: string }) => {
         console.log('hjhjhjhjhbbb', payload)
-        const response = await api.put(config.apis.departments+ '/' + payload.id, payload.department)
+        const response = await api.put(
+            config.apis.departments + '/' + payload.id,
+            payload.department
+        )
         return response.data
     }
 )
@@ -50,12 +53,13 @@ const getAllDepartments = createAsyncThunk(
     'dashboard/getAllDepartments',
     async () => {
         const response = await api.get(config.apis.departments)
-        const departments = response.data;
-        const departmentsOriginData: DepartmentPropsTypes[] = await departments?.map((item: Department, i: number) => ({
-            key: i.toString(),
-            Name: item.Name,
-            Id: Number(item.Id),
-        }));
+        const departments = response.data
+        const departmentsOriginData: DepartmentPropsTypes[] =
+            await departments?.map((item: Department, i: number) => ({
+                key: i.toString(),
+                Name: item.Name,
+                Id: Number(item.Id),
+            }))
         return departmentsOriginData
     }
 )
@@ -74,7 +78,7 @@ const deleteEmployee = createAsyncThunk(
         console.log('kkkk')
 
         const response = await api.delete(config.apis.employees + '/' + id)
-        console.log('kkkk',response)
+        console.log('kkkk', response)
         return { id }
     }
 )
@@ -96,5 +100,5 @@ export {
     addEmployee,
     getAllEmployees,
     editDepartment,
-    deleteEmployee
+    deleteEmployee,
 }

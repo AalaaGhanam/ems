@@ -1,7 +1,7 @@
 # Employee Management System
 
 Welcome to the Employee Management System APIs written in NodeJS using NestJS and ReactJS framework.
-# EMS BAckend
+# EMS Backend
 
 The detaild steps to run the backend service in the readme (https://github.com/AalaaGhanam/ems/blob/main/ems-service/README.md).
 
@@ -36,3 +36,24 @@ You can try to login with admin credentials using
 Check swagger for detailed breakdown of the API endpoints:
 
 http://localhost:3000/api#/
+
+# EMS Frontend
+
+The detaild steps to run the backend service in the readme (https://github.com/AalaaGhanam/ems/blob/main/ems-frontend/README.md).
+
+- Run Service
+
+```sh
+npm run start
+```
+
+- Run Throw Docker
+```sh
+# Run
+docker-compose up --build
+
+# Stop
+docker-compose down
+```
+
+Access Throw: http://localhost:3001

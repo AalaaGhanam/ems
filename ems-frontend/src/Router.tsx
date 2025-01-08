@@ -9,31 +9,31 @@ import { getRecord } from './utils'
 import { STORAGE } from './enums/storage'
 
 type ProtectedRouteType = {
-	redirectPath?: string;
-	children?: JSX.Element;
-};
+    redirectPath?: string
+    children?: JSX.Element
+}
 
 const AppRouter = () => {
     const ProtectedRoute = ({
-		redirectPath = ROUTES.LOGIN,
-		children,
-	}: ProtectedRouteType) => {
-		const access_token = getRecord(STORAGE.ACCESS_TOKEN);
-		if (!access_token) {
-			return <Navigate to={redirectPath} replace />;
-		}
+        redirectPath = ROUTES.LOGIN,
+        children,
+    }: ProtectedRouteType) => {
+        const access_token = getRecord(STORAGE.ACCESS_TOKEN)
+        if (!access_token) {
+            return <Navigate to={redirectPath} replace />
+        }
 
-		return children ? children : <Outlet />;
-	};
+        return children ? children : <Outlet />
+    }
 
     return (
         <Routes>
             <Route path={ROUTES.LOGIN} element={<Login />} />
             <Route element={<ProtectedRoute />}>
-                <Route path={ROUTES.HOME} element={<Dashboard/>} />
-                <Route path={ROUTES.DEPARTMENTS} element={<Departments/>} />
-                <Route path={ROUTES.EMPLOYEES} element={<Employees/>} />
-			</Route>
+                <Route path={ROUTES.HOME} element={<Dashboard />} />
+                <Route path={ROUTES.DEPARTMENTS} element={<Departments />} />
+                <Route path={ROUTES.EMPLOYEES} element={<Employees />} />
+            </Route>
             <Route
                 path={ROUTES.WILD_CARD}
                 element={<ResultComponent status={STATUS_CODE.NOT_FOUND} />}

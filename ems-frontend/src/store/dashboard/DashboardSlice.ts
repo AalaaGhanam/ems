@@ -16,8 +16,8 @@ import { Department } from '../../models/department.model'
 type DashboardState = {
     totalEmployees: number
     latestEmployees: []
-    departmentDistribution: any,
-    departments: Department[] | null,
+    departmentDistribution: any
+    departments: Department[] | null
     employees: Employee[] | null
 }
 
@@ -26,7 +26,7 @@ const initialState: DashboardState = {
     latestEmployees: [],
     departmentDistribution: null,
     departments: [],
-    employees: []
+    employees: [],
 }
 
 const dashboardSlice = createSlice({
@@ -57,15 +57,18 @@ const dashboardSlice = createSlice({
                 addDepartment.fulfilled,
                 (state, action: PayloadAction<any>) => {
                     const newDepartments: any = state.departments
-                    newDepartments.push(action.payload);
-                    state.departments = newDepartments;
+                    newDepartments.push(action.payload)
+                    state.departments = newDepartments
                 }
             )
             .addCase(
                 editDepartment.fulfilled,
                 (state, action: PayloadAction<any>) => {
-                    const newDepartments: any = [state.departments, action.payload]
-                    state.departments = newDepartments;
+                    const newDepartments: any = [
+                        state.departments,
+                        action.payload,
+                    ]
+                    state.departments = newDepartments
                 }
             )
             .addCase(
@@ -78,8 +81,8 @@ const dashboardSlice = createSlice({
                 addEmployee.fulfilled,
                 (state, action: PayloadAction<any>) => {
                     const newEmployees: any = state.employees
-                    newEmployees.push(action.payload);
-                    state.employees = newEmployees;
+                    newEmployees.push(action.payload)
+                    state.employees = newEmployees
                 }
             )
             .addCase(
@@ -91,11 +94,11 @@ const dashboardSlice = createSlice({
             .addCase(
                 deleteEmployee.fulfilled,
                 (state, action: PayloadAction<any>) => {
-                    const employees = state.employees;
+                    const employees = state.employees
                     const newEmployees: any = employees?.filter(
                         (item: Employee) => item.Id != action.payload.id
                     )
-                    state.employees = newEmployees;
+                    state.employees = newEmployees
                 }
             )
     },

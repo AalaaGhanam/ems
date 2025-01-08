@@ -43,7 +43,7 @@ const getRecord = (key: string) => {
 }
 
 const clearRecords = () => {
-	localStorage.clear();
-};
+    localStorage.clear()
+}
 
 export { api, openNotification, saveRecord, getRecord, clearRecords }

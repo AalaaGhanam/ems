@@ -2,9 +2,9 @@ export enum ROUTES {
     HOME = '',
     WILD_CARD = '*',
     SERVER_ERROR = 'something-went-wrong',
-    LOGIN= 'login',
+    LOGIN = 'login',
     DEPARTMENTS = 'departments',
-    EMPLOYEES = 'employees'
+    EMPLOYEES = 'employees',
 }
 
 export enum STATUS_CODE {

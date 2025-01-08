@@ -32,11 +32,10 @@ git clone https://github.com/AalaaGhanam/ems
 npm i
 ```
 Once all dependencies are installed start you can run the service using docker compose,
-the configuration using the dotenv NodeJS module. To set up environment
-variables copy and paste then rename the .dev.env files to .env.
+To set up environment variables copy and paste then rename the .dev.env files to .env.
 
 > [!IMPORTANT]
-> To initiate and sync the database with initial data database, I add migration script to run throw docker compose.
+> To initiate and sync the database with initial data database, I added migration script to run throw docker compose.
 
 
 - Run Service

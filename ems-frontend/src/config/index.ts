@@ -6,7 +6,7 @@ const config = {
         totalEmployees: 'employees/total',
         latestEmployees: 'employees/latest',
         departments: 'departments',
-        employees: 'employees'
+        employees: 'employees',
     },
     constants: {},
 }
