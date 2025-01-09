@@ -36,7 +36,7 @@ export class InitDatabase1691234567890 implements MigrationInterface {
     const hashedPassword = await bcrypt.hash("admin123", 10); // Hash the password
     await queryRunner.query(`
       INSERT INTO "user" ("Username", "Password", "Role")
-      VALUES ('admin123', '${hashedPassword}', 'Admin');
+      VALUES ('Admin', '${hashedPassword}', 'Admin');
     `);
 
     await queryRunner.query(`

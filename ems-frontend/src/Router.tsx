@@ -42,6 +42,10 @@ const AppRouter = () => {
                 path={ROUTES.SERVER_ERROR}
                 element={<ResultComponent status={STATUS_CODE.SERVER_ERROR} />}
             />
+            <Route
+                path={ROUTES.UNATHORIZED}
+                element={<ResultComponent status={STATUS_CODE.UNATHORIZED} />}
+            />
         </Routes>
     )
 }

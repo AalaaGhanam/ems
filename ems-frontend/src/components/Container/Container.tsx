@@ -9,8 +9,10 @@ import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import { authActions } from '../../store/auth/AuthSlice'
 import jwtDecode from 'jwt-decode'
 import { useNavigate } from 'react-router-dom'
-import { ROUTES } from '../../enums/routes'
+import { ROUTES, STATUS_CODE } from '../../enums/routes'
 import SideMenu from '../SideMenu/SideMenu'
+import { UserRole } from '../../enums/userRole'
+import ResultComponent from '../Result/Result'
 
 const Container = (props: any) => {
     const dispatch = useAppDispatch()
@@ -18,6 +20,7 @@ const Container = (props: any) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const navigate = useNavigate()
 
+    const [user] = useAppSelector((state) => [state.auth.user])
     useEffect(() => {
         const accessToken = getRecord(STORAGE.ACCESS_TOKEN)
         if (accessToken) {
@@ -54,7 +57,9 @@ const Container = (props: any) => {
             {isLoggedIn && <AppHeader />}
             <Content className={classes.content}>
                 <Layout className={classes.layout}>
-                    {isLoggedIn && <SideMenu />}
+                    {isLoggedIn && user?.role === UserRole.Admin && (
+                        <SideMenu />
+                    )}
                     <Content className={classes.content}>
                         <div className={classes.children}>{props.children}</div>
                     </Content>

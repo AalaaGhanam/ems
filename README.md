@@ -29,7 +29,7 @@ EMS service consists of multiple controllers,
 You can try to login with admin credentials using 
 ```sh
 {
-  "username": "admin123",
+  "username": "Admin",
   "password": "admin123"
 }
 ```

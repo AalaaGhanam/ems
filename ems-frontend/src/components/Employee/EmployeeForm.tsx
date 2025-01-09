@@ -42,7 +42,6 @@ const EmployeeForm = ({ departments }: ListProps) => {
     const [messageApi, contextHolder] = message.useMessage()
 
     const onFinish = async (values: any) => {
-        console.log('values', values)
         const department: EmployeeDto = {
             ...values,
             HireDate: values?.HireDate?.toString(),

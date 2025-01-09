@@ -10,6 +10,7 @@ import { dashboardActions } from '../../store/dashboard/DashboardSlice'
 import { commonActions } from '../../store/common/CommonSlice'
 import { ROUTES } from '../../enums/routes'
 import { useNavigate } from 'react-router-dom'
+import { UserRole } from '../../enums/userRole'
 
 const Dashboard = () => {
     const dispatch = useAppDispatch()
@@ -21,8 +22,7 @@ const Dashboard = () => {
             state.dashboard.latestEmployees,
             state.dashboard.departmentDistribution,
         ])
-    const userReduxState = useAppSelector((state) => state.auth)
-
+    const [user] = useAppSelector((state) => [state.auth.user])
     useEffect(() => {
         dispatch(dashboardActions.reset())
         dispatch(commonActions.reset())
@@ -31,10 +31,13 @@ const Dashboard = () => {
         dispatch(countByDepartment())
     }, [])
     useEffect(() => {
-        if (!userReduxState.user) {
+        if (!user) {
             navigate(`/${ROUTES.LOGIN}`, { replace: true })
         }
-    }, [userReduxState])
+        if (user?.role !== UserRole.Admin) {
+            navigate(`/${ROUTES.UNATHORIZED}`, { replace: true })
+        }
+    }, [user])
     return (
         <DashboardOverview
             totalEmployees={totalEmployees}

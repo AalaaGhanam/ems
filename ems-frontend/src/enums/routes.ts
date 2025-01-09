@@ -5,6 +5,7 @@ export enum ROUTES {
     LOGIN = 'login',
     DEPARTMENTS = 'departments',
     EMPLOYEES = 'employees',
+    UNATHORIZED = 'invalid-credentials',
 }
 
 export enum STATUS_CODE {
