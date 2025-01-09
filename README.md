@@ -60,8 +60,10 @@ Access Throw: http://localhost:3001
 
 Client Screenshots
 
-![Admin Dashboard](<blob/Screenshot 2025-01-08 at 5.50.36 PM.png?raw=true>)
+![Admin Dashboard](<blob/Screenshot 2025-01-09 at 4.12.14 AM.png>)
 
-![Department Management](<blob/Screenshot 2025-01-08 at 5.51.05 PM.png?raw=true>)
+![Department Management](<blob/Screenshot 2025-01-09 at 4.11.57 AM.png>)
 
-![Employee Management](<blob/Screenshot 2025-01-08 at 5.50.56 PM.png?raw=true>)
+![Employee Management](<blob/Screenshot 2025-01-09 at 4.11.49 AM.png>)
+
+![Login](<blob/Screenshot 2025-01-09 at 4.12.23 AM.png>)
