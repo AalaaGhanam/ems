@@ -1,5 +1,13 @@
 import React from 'react'
-import { Form, Input, Select, Button, DatePicker, message } from 'antd'
+import {
+    Form,
+    Input,
+    Select,
+    Button,
+    DatePicker,
+    message,
+    InputNumber,
+} from 'antd'
 import moment from 'moment'
 import { useAppDispatch } from '../../store/hooks'
 import { Department } from '../../models/department.model'
@@ -8,10 +16,23 @@ import { addEmployee } from '../../store/dashboard/DashboardActions'
 import { ROUTES } from '../../enums/routes'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+const { Option } = Select
 
 interface ListProps {
     departments: Department[]
 }
+
+const selectBefore = (
+    <Select defaultValue="add" style={{ width: 60 }}>
+        <Option value="add">+</Option>
+        <Option value="minus">-</Option>
+    </Select>
+)
+const selectAfter = (
+    <Select defaultValue="USD" style={{ width: 60 }}>
+        <Option value="USD">$</Option>
+    </Select>
+)
 
 const EmployeeForm = ({ departments }: ListProps) => {
     const { t } = useTranslation()
@@ -21,9 +42,10 @@ const EmployeeForm = ({ departments }: ListProps) => {
     const [messageApi, contextHolder] = message.useMessage()
 
     const onFinish = async (values: any) => {
+        console.log('values', values)
         const department: EmployeeDto = {
             ...values,
-            HireDate: values.HireDate.toString(),
+            HireDate: values?.HireDate?.toString(),
         }
         try {
             await dispatch(addEmployee(department)).unwrap()
@@ -73,6 +95,7 @@ const EmployeeForm = ({ departments }: ListProps) => {
                         rules={[
                             {
                                 required: true,
+                                type: 'email',
                                 message: t('DASHBOARD.FORM.MESSAGE'),
                             },
                         ]}
@@ -89,11 +112,11 @@ const EmployeeForm = ({ departments }: ListProps) => {
                             },
                         ]}
                     >
-                        <Input />
+                        <InputNumber defaultValue={100} />
                     </Form.Item>
                     <Form.Item
-                        name={t('DASHBOARD.HIREDATE')}
-                        label={'HireDate'}
+                        name="HireDate"
+                        label={t('DASHBOARD.HIREDATE')}
                         rules={[
                             {
                                 type: 'object',

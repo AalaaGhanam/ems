@@ -72,21 +72,18 @@ const EmployeeList = ({ employees }: ListProps) => {
         {
             title: 'Action',
             key: 'action',
-            // render: () => (
-            //   <Space>
-            //     <Button type="link">Edit</Button>
-            //     <Button type="link" danger>Delete</Button>
-            //   </Space>
-            // ),
             render: (_: any, record: any) => (
-                <Popconfirm
-                    title={t('DASHBOARD.DELETE.MESSAGE')}
-                    onConfirm={() => handleDelete(record)}
-                >
-                    <Button type="link" danger>
-                        {t('DASHBOARD.BUTTON.DELETE')}
-                    </Button>
-                </Popconfirm>
+                <>
+                    <Popconfirm
+                        title={t('DASHBOARD.DELETE.MESSAGE')}
+                        onConfirm={() => handleDelete(record)}
+                    >
+                        <Button type="link" danger>
+                            {t('DASHBOARD.BUTTON.DELETE')}
+                        </Button>
+                    </Popconfirm>
+                    <Button type="link">{t('DASHBOARD.BUTTON.EDIT')}</Button>
+                </>
             ),
         },
     ]

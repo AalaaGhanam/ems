@@ -24,8 +24,10 @@ const SideMenu: React.FC = () => {
                 className="logo"
                 style={{ color: 'white', textAlign: 'center', padding: '1rem' }}
             >
-                   <Title style={{ color: 'white'}}level={4}> {t('DASHBOARD.ADMIN')}</Title>
-
+                <Title style={{ color: 'white' }} level={4}>
+                    {' '}
+                    {t('DASHBOARD.ADMIN')}
+                </Title>
             </div>
             <Menu
                 style={{ backgroundColor: '#488cf4' }}
