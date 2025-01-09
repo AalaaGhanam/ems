@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
-import { Layout } from 'antd'
+import { Tabs } from 'antd'
 import EmployeeForm from '../../components/Employee/EmployeeForm'
-import SideMenu from '../../components/SideMenu/SideMenu'
 import EmployeeList from '../../components/Employee/EmployeeList'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import {
@@ -12,12 +11,13 @@ import { Employee } from '../../models/employee.model'
 import { Department } from '../../models/department.model'
 import { ROUTES } from '../../enums/routes'
 import { useNavigate } from 'react-router-dom'
-
-const { Content } = Layout
+import TabPane from 'antd/es/tabs/TabPane'
+import { useTranslation } from 'react-i18next'
 
 const Employees: React.FC = () => {
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
+    const { t } = useTranslation()
 
     const [employees, departments] = useAppSelector((state) => [
         state.dashboard.employees,
@@ -37,22 +37,14 @@ const Employees: React.FC = () => {
     }, [userReduxState])
 
     return (
-        <Layout style={{ minHeight: '100vh' }}>
-            <SideMenu />
-            <Layout>
-                <Content
-                    style={{
-                        margin: '24px 16px',
-                        padding: 24,
-                        background: '#fff',
-                    }}
-                >
-                    <EmployeeForm departments={departments as Department[]} />
-                    <br />
-                    <EmployeeList employees={employees as Employee[]} />
-                </Content>
-            </Layout>
-        </Layout>
+        <Tabs type="card">
+            <TabPane tab={t('DASHBOARD.EMPLOYEES.LIST')} key={2}>
+                <EmployeeList employees={employees as Employee[]} />
+            </TabPane>
+            <TabPane tab={t('DASHBOARD.EMPLOYEES.CREATE')} key={1}>
+                <EmployeeForm departments={departments as Department[]} />
+            </TabPane>
+        </Tabs>
     )
 }
 

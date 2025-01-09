@@ -7,6 +7,7 @@ import {
 } from '@ant-design/icons'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import Title from 'antd/es/typography/Title'
 
 const { Sider } = Layout
 
@@ -21,9 +22,10 @@ const SideMenu: React.FC = () => {
         >
             <div
                 className="logo"
-                style={{ color: 'white', textAlign: 'center', padding: '16px' }}
+                style={{ color: 'white', textAlign: 'center', padding: '1rem' }}
             >
-                {t('DASHBOARD.ADMIN')}
+                   <Title style={{ color: 'white'}}level={4}> {t('DASHBOARD.ADMIN')}</Title>
+
             </div>
             <Menu
                 style={{ backgroundColor: '#488cf4' }}

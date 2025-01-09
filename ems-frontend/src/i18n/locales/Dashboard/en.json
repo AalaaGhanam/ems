@@ -23,5 +23,9 @@
     "DASHBOARD.ADMIN": "Admin Dashboard",
     "DASHBOARD.EMPLOYEES": "Employees",
     "DASHBOARD.DEPARTMENTIDS": "Departments",
-    "DASHBOARD": "Dashboard"
+    "DASHBOARD": "Dashboard",
+    "DASHBOARD.DEPARTMENTS.CREATE": "Create New Department",
+    "DASHBOARD.DEPARTMENTS.LIST": "Departments List",
+    "DASHBOARD.EMPLOYEES.CREATE": "Create New Employee",
+    "DASHBOARD.EMPLOYEES.LIST": "Employees List"
 }

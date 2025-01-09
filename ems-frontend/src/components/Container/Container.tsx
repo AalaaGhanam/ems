@@ -1,6 +1,6 @@
 import { Layout } from 'antd'
 import { Content } from 'antd/lib/layout/layout'
-import { PropsWithChildren, ReactNode, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { STORAGE } from '../../enums/storage'
 import { getRecord } from '../../utils'
 import AppHeader from '../AppHeader/AppHeader'
@@ -10,6 +10,7 @@ import { authActions } from '../../store/auth/AuthSlice'
 import jwtDecode from 'jwt-decode'
 import { useNavigate } from 'react-router-dom'
 import { ROUTES } from '../../enums/routes'
+import SideMenu from '../SideMenu/SideMenu'
 
 const Container = (props: any) => {
     const dispatch = useAppDispatch()
@@ -47,11 +48,17 @@ const Container = (props: any) => {
             setIsLoggedIn(false)
         }
     }, [userReduxState])
+
     return (
         <Layout className={classes.layout}>
             {isLoggedIn && <AppHeader />}
             <Content className={classes.content}>
-                <div className={classes.children}>{props.children}</div>
+                <Layout className={classes.layout}>
+                    {isLoggedIn && <SideMenu />}
+                    <Content className={classes.content}>
+                        <div className={classes.children}>{props.children}</div>
+                    </Content>
+                </Layout>
             </Content>
         </Layout>
     )
